@@ -1,24 +1,23 @@
+#include <cmath> 
 #include <iostream>
-#include <cmath>
 
-int main() {
-    int a, b, c;
-    std::cin >> a;
-    std::cin >> b;
-    std::cin >> c;
-    int D = b * b - 4 * a * c;
-    if (D < 0) {
-        std::cout << "no real solutions"<<std::endl;
+int main()
+{
+    double a, b, c, D, x1, x2; 
+    std::cin >> a >> b >> c;
+    D = b * b - 4 * a * c; 
+    if (D > 0) 
+    {
+        x1 = ((-b) + sqrt(D)) / (2 * a);
+        x2 = ((-b) - sqrt(D)) / (2 * a);
+        std::cout << "two solutions: " << x1 << "," << x2 << "\n";
     }
-    else if (D == 0) {
-        std::cout << "one solution: " << -b / 2 / a << std::endl;
+    if (D == 0)
+    {
+        x1 = -(b / (2 * a));
+        std::cout << "one solution:" << x1 << "\n";
     }
-    else {
-        int x1 = (-b + sqrt(D)) / 2 / a;
-        int x2 = (-b - sqrt(D)) / 2 / a;
-        std::cout << "two solutions: " << x1 << "," << x2 << std::endl;
-    }
-
-
+    if (D < 0) 
+        std::cout << "no real solutions";
     return 0;
 }
