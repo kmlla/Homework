@@ -1,19 +1,28 @@
 #include <iostream>
 
 
-int main() {
-	int n, m, i, j, q = 0, w = 1, k;
-	std::cin >> n >> k;
-	int a[100], b[100];
-	for (i = 1;i <= n;i++)std:: cin >> a[i];
-	for (i = 1;i <= n;i++) {
+void shiftArray(int* a, int n, int k) {
+	for (int i = 1; i <= n; ++i) {
 		if (i <= k) {
-			b[n - k + i] = a[i];
+			a[n - k + i] = i;
 		}
 		else {
-			b[i - k] = a[i];
+			a[i - k] = i;
 		}
 	}
-	for (i = 1;i <= n;i++) std::cout << b[i] << " ";
+}
+
+int main() {
+	int N, l;
+	std::cin >> N >> l;
+	int* arr = new int[N];
+	for (int i = 1; i <= N; ++i) {
+		std::cin >> arr[i];
+	}
+	shiftArray(arr, N, l);
+	for (int i = 1; i <= N; ++i) {
+		std::cout << arr[i] << " ";
+	}
+	delete[] arr;
 	return 0;
 }
