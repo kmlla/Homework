@@ -1,19 +1,18 @@
 #include <iostream>
-int main()
-{
-    int n, x;
+int main() {
+    int n;
+    float x;
     std::cin >> n >> x;
-    int* a = new int[n + 1];
-    for (int i = n; i >= 0; --i)
+    int* m = new int[n + 1];
+    int s = 0;
+    float k = 1;
+    for (int i = 0; i <= n; ++i)
     {
-        std::cin >> a[i];
+        std::cin >> m[i];
+        s += m[i] * k;
+        k *= x;
     }
-    int s = a[n];
-    for (int i = 1; i <= n; ++i)
-    {
-        s *= x;
-        s += a[n - i];
-    }
-    std::cout << s << std::endl;
+    std::cout << s << '\n';
+    delete[] m;
     return 0;
 }
