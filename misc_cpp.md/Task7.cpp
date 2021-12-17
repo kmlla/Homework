@@ -1,6 +1,6 @@
 #include <iostream>
 int main() {
-    int R;
+    double R;
     std::cin >> R;
     long long count = -1;
     for (int y = 0; y <= R; ++y) {
