@@ -28,5 +28,6 @@ int main() {
 			std::cout << a[i][j] << " ";
 		}
 	}
+	delete[] a;
 	return 0;
 }
