@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 
-std::string left(int num, int sp) {
+std::string right(int num, int sp) {
 	std::string res = std::to_string(num);
 	int num_d = 0;
 	do {
