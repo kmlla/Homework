@@ -3,9 +3,11 @@ using namespace std ;
 
 string reverseString (string str )
 {
-  string dop;
-  for (int i=str.size()-1;i>=0;--i){
-    dop+=str[i];
+  for (int i = 0; i < str.size() / 2; ++i)
+  {
+    char s = str[i];
+    str[i] = str[str.size() - 1 - i];
+    str[str.size() - 1 - i] = s;
   }
-  return dop;
-  }
+    return str;
+}
