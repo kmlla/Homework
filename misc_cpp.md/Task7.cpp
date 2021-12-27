@@ -1,15 +1,14 @@
+#include<cmath>
 #include <iostream>
 int main() {
     double R;
     std::cin >> R;
-    long long count = -1;
-    for (int y = 0; y <= R; ++y) {
-        for (int x = 0; x <= R; ++x) {
-            if ((x * x + y * y) <= R * R) {
-                count += 1;
-            }
-        }
-    }
-    std::cout << 1 + count * 4 - 4 * R;
-    return 0;
+    double sum = 0;
+    for (double y = 1.; y <= R; y += 1.)
+        for (double x = 1.; x <= R; x += 1.)
+            if ((x * x + y * y) <= R * R)
+                ++sum;
+    sum *= 4;
+    sum += 4 * R + 1;
+    std::cout << sum;
 }
