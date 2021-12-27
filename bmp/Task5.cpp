@@ -2,15 +2,14 @@
 #include "ImgFunctions.h"
 #include <algorithm> 
 
-typedef unsigned long ulong;
 
-RgbImg medianFilter(RgbImg const& image, ulong kernel_size)
+RgbImg medianFilter(RgbImg const& image, size_t kernel_size)
 {
     RgbImg imgCopy = copyRgbImg(image);
-    ulong const height = image.height;
-    ulong const width = image.width;
-    ulong const half = kernel_size / 2;
-    ulong const kernel_count = kernel_size * kernel_size;
+    size_t const height = image.height;
+    size_t const width = image.width;
+    size_t const half = kernel_size / 2;
+    size_t const kernel_count = kernel_size * kernel_size;
 
     double* blues = new double[kernel_count];
     double* greens = new double[kernel_count];
@@ -18,14 +17,14 @@ RgbImg medianFilter(RgbImg const& image, ulong kernel_size)
 
     auto median_element_index = kernel_count / 2;
 
-    for (ulong row = half; row < height - half; ++row)
-        for (ulong col = half; col < width - half; ++col)
+    for (size_t row = half; row < height - half; ++row)
+        for (size_t col = half; col < width - half; ++col)
         {
-            for (ulong k_row = 0; k_row < kernel_size; ++k_row)
-                for (ulong k_col = 0; k_col < kernel_size; ++k_col)
+            for (size_t k_row = 0; k_row < kernel_size; ++k_row)
+                for (size_t k_col = 0; k_col < kernel_size; ++k_col)
                 {
-                    ulong const res_row = row + k_row - half;
-                    ulong const res_col = col + k_col - half;
+                    size_t const res_row = row + k_row - half;
+                    size_t const res_col = col + k_col - half;
                     RGB const& pixel = image.pixels[res_row][res_col];
                     auto idx = (k_row * kernel_size) + k_col;
 
@@ -61,7 +60,7 @@ int main(int argc, char const* argv[])
     auto image = readRgbImg("kidsnoise.bmp");
     auto medianed = medianFilter(image, 3);
 
-    writeRgbImg("kidsnoise_1.bmp", medianed);
+    writeRgbImg("kidsnoise_2.bmp", medianed);
 
     deleteRgbImg(image);
     deleteRgbImg(medianed);
