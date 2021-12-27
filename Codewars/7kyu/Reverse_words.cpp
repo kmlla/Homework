@@ -1,17 +1,19 @@
+#include<iostream>
+#include <string>
+
 std::string reverse_words(std::string str)
 {
-    std::string out;  //The default is an empty string
-    std::string a_word;
-    for (int i=0;i<str.size();++i) {
-        if (str[i] != ' ') {  //If it is not a space, add a word from the front to make the words in reverse order.
-            a_word = str[i] + a_word;
-        }
-        if (str[i] == ' ') {  //If it is a space, put the word in the output string,
-            out = out + a_word;
-            a_word = "";  //The word is blank, then start next time
-            out = out + " ";  //The output string plus spaces
+    char dop; int b = 0;
+    int len = str.size();
+    for (int i = 0; i <= len; ++i) {
+        if (str[i] == ' ' || i == len) {
+            for (int j = b; j < b + (i - b) / 2; ++j) {
+                dop = str[j];
+                str[j] = str[b + i - (j + 1)];
+                str[b + i - (j + 1)] = dop;
+            } 
+            b = i + 1;
         }
     }
-    out = out + a_word;
-    return out;
+    return str;
 }
